@@ -1,0 +1,1592 @@
+{
+	"info": {
+		"_postman_id": "2ff195ea-244a-448d-9c81-bd66233a188e",
+		"name": "Part1 Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25974508"
+	},
+	"item": [
+		{
+			"name": "Convenors (DEL METHOD NEEDS TO BE ADDED)",
+			"item": [
+				{
+					"name": "List All Convenors (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Convenors (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenorr",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenorr"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Convenor (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 201\", function () {",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors?name=Test Convenor&position=GTA",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test Convenor"
+								},
+								{
+									"key": "position",
+									"value": "GTA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Convenor (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors?name=Test Convenor&position=TEST",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test Convenor"
+								},
+								{
+									"key": "position",
+									"value": "TEST"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Convenor By ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Convenor By ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Convenor By ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/3?name=Test Name&position=GTA",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test Name"
+								},
+								{
+									"key": "position",
+									"value": "GTA"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Convenor By ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/3?name=Test Name&position=TEST",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"3"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Test Name"
+								},
+								{
+									"key": "position",
+									"value": "TEST"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Convenor's Modules By ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Convenor's Modules By ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/44",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"44"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Modules",
+			"item": [
+				{
+					"name": "GET All Modules (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET All Modules (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/module",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"module"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Module (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules?code=CO2102&title=Test Title&level=4&optional=false",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102"
+								},
+								{
+									"key": "title",
+									"value": "Test Title"
+								},
+								{
+									"key": "level",
+									"value": "4"
+								},
+								{
+									"key": "optional",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Module (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules?title=Test Title&level=4&optional=false",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "Test Title"
+								},
+								{
+									"key": "level",
+									"value": "4"
+								},
+								{
+									"key": "optional",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Module by Code (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2102?title=New Title&level=3&optional=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2102"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "New Title"
+								},
+								{
+									"key": "level",
+									"value": "3"
+								},
+								{
+									"key": "optional",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Module by Code (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2102?title=New Title&optional=true",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2102"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "title",
+									"value": "New Title"
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "optional",
+									"value": "true"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Module Sessions by Module Code (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Module Sessions by Module Code (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2000/sessions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2000",
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Module Session by Module Code (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions?topic=TEST TOPIC&time=2023-01-19 10:00:00&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "TEST TOPIC"
+								},
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00"
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Module Session by Module Code (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions?topic=TEST TOPIC&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "TEST TOPIC"
+								},
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Module Sessions by Module Code and Session ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Module Sessions by Module Code and Session ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"2"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Module Session by Module Code and Session ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1?time=2023-01-19 10:00:00&topic=Test Topic&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic"
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Module Session by Module Code and Session ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1?time=2023-01-19 10:00:00&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Part of A Module Session by Module Code and Session ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1?time=2023-01-19 10:00:00&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19 10:00:00"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Part of A Module Session by Module Code and Session ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1?time=2023-01-19&duration=60",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "time",
+									"value": "2023-01-19"
+								},
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic",
+									"disabled": true
+								},
+								{
+									"key": "duration",
+									"value": "60"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sessions",
+			"item": [
+				{
+					"name": "Get Session by Convenor ID or Module Code (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sessions?id=1&code=CO2103",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								},
+								{
+									"key": "code",
+									"value": "CO2103"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Session by Convenor ID or Module Code (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sessions?id=4&code=CO2103",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sessions"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								},
+								{
+									"key": "code",
+									"value": "CO2103"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Methods",
+			"item": [
+				{
+					"name": "Delete Module by Code (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2102/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2102",
+								""
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Module by Code (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO0000/",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO0000",
+								""
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Module Session by Module Code and Session ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"1"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Module Session by Module Code and Session ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/modules/CO2103/sessions/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"modules",
+								"CO2103",
+								"sessions",
+								"3"
+							],
+							"query": [
+								{
+									"key": "code",
+									"value": "CO2102",
+									"disabled": true
+								},
+								{
+									"key": "level",
+									"value": "3",
+									"disabled": true
+								},
+								{
+									"key": "topic",
+									"value": "Test Topic",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all Sessions (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/sessions",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all Sessions (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/session",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"session"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Convenor by ID (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Convenor by ID (Error)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/convenors/53",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"convenors",
+								"53"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,634 @@
+openapi: 3.0.1
+info:
+  title: PART1
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:8080/
+
+tags:
+  - name: convenor
+    description: All API Endpoints Related to Module Convenors
+  - name: module
+    description: All API Endpoints Related to Modules
+  - name: session
+    description: All API Endpoints Related to Sessions
+paths:
+  /convenors:
+    get:
+      tags:
+        - convenor
+      summary: Return all Convenors
+      description: Return all Convenors
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Convenor'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - convenor
+      summary: Create a New Convenor
+      description: Create a New Convenor
+      parameters:
+        - name: name
+          in: query
+          description: Name of Convenor
+          required: true
+          schema:
+            type: string
+        - name: position
+          in: query
+          description: Position of Convenor
+          required: true
+          schema:
+            type: string
+            enum:
+              - GTA
+              - LECTURER
+              - PROFESSOR
+      requestBody:
+        description: New Convenor is Created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Convenor'
+      responses:
+        '201':
+          description: Convenor is Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        '500':
+          description: Internal Server Error
+
+  /convenors/{id}:
+    get:
+      tags:
+        - convenor
+      summary: Get Convenor by ID
+      description: Get Convenor by ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of Desired Convenor
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        '404':
+          description: Not Found
+
+    put:
+      tags:
+        - convenor
+      summary: Update Convenor Using ID
+      description: Update Convenor Using ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of Convenor to Update
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        '404':
+          description: Not Found
+    delete:
+      tags:
+        - convenor
+      summary: Delete a Convenor Using ID
+      description: Delete a Convenor Using ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of Convenor to Delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Convenor'
+        '400':
+          description: Not Found
+
+  /convenors/{id}/modules:
+    get:
+      tags:
+        - convenor
+      summary: Gets Modules Taught by a Convenor Using their ID
+      description: Gets Modules Taught by a Convenor Using their ID
+      parameters:
+        - name: id
+          in: path
+          description: ID of Convenor Who's Modules You Want to Find
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '404':
+          description: Not Found
+
+  /modules:
+    get:
+      tags:
+        - module
+      summary: Gets All Modules
+      description: Gets All Modules
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Module'
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+    post:
+      tags:
+        - module
+      summary: Add a New Module
+      description: Add a New Module
+      parameters:
+        - name: code
+          in: query
+          description: Code of the Module
+          required: true
+          schema:
+            type: string
+        - name: title
+          in: query
+          description: Title of the Module
+          required: true
+          schema:
+            type: string
+        - name: level
+          in: query
+          description: Level of the Module
+          required: true
+          schema:
+            type: integer
+        - name: optional
+          in: query
+          description: Whether or not the Module is Optional
+          required: true
+          schema:
+            type: boolean
+      requestBody:
+        description: New Module is Created
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Module'
+      responses:
+        '201':
+          description: Module is Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '500':
+          description: Internal Server Error
+
+  /modules/{code}:
+    put:
+      tags:
+        - module
+      summary: Update Module Using Code
+      description: Update Module Using Code
+      parameters:
+        - name: code
+          in: path
+          description: Code of Module to Update
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Module'
+        '404':
+          description: Not Found
+
+    delete:
+      tags:
+        - module
+      summary: Delete Module by its Code
+      description: Delete Module by its Code
+      parameters:
+        - name: code
+          in: path
+          description: Code of Module to Delete
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Module Successfully Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Module with Code ${code} deleted
+        '404':
+          description: Module Not Found
+
+  /modules/{code}/sessions:
+    get:
+      tags:
+        - module
+      summary: Gets All Sessions in a Specific Module
+      description: Gets All Sessions in a Specific Module
+      parameters:
+        - name: code
+          in: path
+          description: Code of the Module Who's Sessions You Want to Retrive
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        '404':
+          description: Not Found
+
+    post:
+      tags:
+        - module
+      summary: Add a New Session to a Specific Module
+      description: Add a New Session to a Specific Module
+      parameters:
+        - name: code
+          in: path
+          description: Module Code to Add the Session To
+          required: true
+          schema:
+            type: string
+        - name: topic
+          in: query
+          description: Topic of Session to Be Added to Module
+          required: true
+          schema:
+            type: string
+        - name: time
+          in: query
+          description: Time/Date that the Session Takes Place
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: duration
+          in: query
+          description: The Duration of the Session
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: New Session is Added to Specified Module
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+      responses:
+        '201':
+          description: Session is Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: Not Found
+
+  /modules/{code}/sessions/{id}:
+    get:
+      tags:
+        - module
+      summary: Gets Session From a Specific Module Based on the Session ID
+      description: Gets Session From a Specific Module Based on the Session ID
+      parameters:
+        - name: code
+          in: path
+          description: Code of the Module Who's Sessions You Want to Retrive
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of the Session You Want to Retrieve
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        '404':
+          description: Not Found
+
+    put:
+      tags:
+        - module
+      summary: Updates a Session in a Module by its ID
+      description: Updates a Session in a Module by its ID
+      parameters:
+        - name: code
+          in: path
+          description: Code of Module Containing the Session
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of the Session You Want to Retrieve
+          required: true
+          schema:
+            type: integer
+        - name: topic
+          in: query
+          description: New Topic Name of Session
+          required: true
+          schema:
+            type: string
+        - name: time
+          in: query
+          description: New Time of Session
+          required: true
+          schema:
+            type: string
+            format: date-time
+        - name: duration
+          in: query
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: Not Found
+
+    patch:
+      tags:
+        - module
+      summary: Update Specific Elements of a Session in a Module by its ID
+      description: Update Specific Elements of a Session in a Module by its ID
+      parameters:
+        - name: code
+          in: path
+          description: Code of Module Containing the Session
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of the Session You Want to Retrieve
+          required: true
+          schema:
+            type: integer
+        - name: topic
+          in: query
+          description: New Topic Name of Session
+          required: false
+          schema:
+            type: string
+        - name: time
+          in: query
+          description: New Time of Session
+          required: false
+          schema:
+            type: string
+            format: date-time
+        - name: duration
+          in: query
+          required: false
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+        '404':
+          description: Module or Session Not Found
+        '400':
+          description: Bad Request (e.g. Wrong Parameters Given)
+
+    delete:
+      tags:
+        - module
+      summary: Delete a Session Based on its ID from a Specific Module
+      description: Delete a Session Based on its ID from a Specific Module
+      parameters:
+        - name: code
+          in: path
+          description: Code of the Module Containing the Session
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          description: ID of Session You Wish to Delete
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Session Deleted Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session with id {id} deleted
+        '404':
+          description: Session Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Session with id {id} not found in module with code {code}
+
+  /sessions:
+    delete:
+      tags:
+        - session
+      summary: Delete All Sessions
+      description: Delete All Sessions
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "All Sessions Deleted"
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Error Deleting Sessions"
+    get:
+      tags:
+        - session
+      summary: Retrives All Sessions Matching Specified Parameters (Convenor ID, Module Code, or Both)
+      description: Retrives All Sessions Matching Specified Parameters (Convenor ID, Module Code, or Both)
+      parameters:
+        - name: id
+          in: query
+          description: The ID of the Convenor Who's Sessions You Want to Retrieve
+          required: false
+          schema:
+            type: integer
+        - name: code
+          in: query
+          description: The Code of the Module Who's Sessions You Want to Retrieve
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+
+
+
+components:
+  schemas:
+    Convenor:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: Convenor Name
+        position:
+          type: string
+          enum:
+            - GTA
+            - LECTURER
+            - PROFESSOR
+          example: LECTURER
+      required:
+        - id
+        - name
+        - position
+    Module:
+      type: object
+      properties:
+        id:
+          type: string
+          example: CO2101
+        title:
+          type: string
+          example: Test Module Name
+        level:
+          type: integer
+          example: 2
+        optional:
+          type: boolean
+          example: false
+      required:
+        - id
+        - title
+        - level
+        - optional
+    Session:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 2
+        topic:
+          type: string
+          example: Test Topic
+        datetime:
+          type: string
+          format: date-time
+          example: 2023-01-19 10:00:00
+        duration:
+          type: integer
+          example: 60
+      required:
+        - id
+        - topic
+        - datetime
+        - duration
