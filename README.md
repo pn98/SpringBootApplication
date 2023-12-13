@@ -1,4 +1,4 @@
-#CO2103 University Module Management System
+CO2103 University Module Management System
 
 This repository contains the source code for a simple University Module Management System developed using the Spring Boot framework. The system allows for the management of modules, convenors, and sessions.
 
